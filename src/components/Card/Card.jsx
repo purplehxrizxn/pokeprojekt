@@ -16,7 +16,7 @@ export default function Card(props) {
 
         <Data>
             <div>
-                    <span>Water</span>
+                <span>Water</span>
             </div>
 
             <div>
