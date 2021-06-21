@@ -19,7 +19,7 @@ export const Container = styled.div`
 
 export const CardTitle = styled.h3`
     color: #C9D3E0;
-    font-size: 18px;
+    font-size: 1.8rem;
     text-align: center;
     margin-bottom: 20px;
 `;
@@ -51,7 +51,8 @@ export const Data = styled.div`
 
                 span {
                     display: block;
-                    font-size: 12px;
+                    font-size: 1.2rem;
+                    text-shadow: 2px 1px #00000060;
                     color: #f2f2f2;
                     padding: 7px 15px;
                     background: #6990F0;
@@ -64,7 +65,7 @@ export const Data = styled.div`
                 margin-top: auto;
 
                 span {
-                    font-size: 14px;
+                    font-size: 1.4rem;
                     color: #C9D3E0;
                 }
             }
