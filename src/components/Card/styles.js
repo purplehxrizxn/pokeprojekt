@@ -2,73 +2,73 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     background: #191919;
-    border: 5px solid #6990F0;
 
-    min-width: 380px;
-    max-width: 380px;
-    min-height: 380px;
-    max-height: 380px;
-    border-radius: 20px;
-    box-shadow: 3px 3px #575757;
-    padding: 30px 20px 20px;
+    min-width: 330px;
+    max-width: 330px;
+    min-height: 330px;
+    max-height: 330px;
+    border-radius: 5px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #C9D3E0;
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        margin-top: 30px;
+        letter-spacing: 1px;
+    }
+
+    @media screen and (max-width: 540px) {
+        min-width: 100%;
+        max-width: 100%;
+    }
 `; 
 
-
-
-export const CardTitle = styled.h3`
-    color: #C9D3E0;
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 20px;
-`;
-
 export const Sprite = styled.div`
+    height: 200px;
+    width: 230px;
+    background: #222;
+    padding: 15px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
 
-    div {
-        width: 200px;
-        height: 200px;
-        background: #000;
-        margin-bottom: 20px;
-
+    span {
+        font-size: 1.2rem;
     }
 `;
 
+export const Figure = styled.div`
+    background: #191919;
+    height: 70%;
+    width: 80%;
+    margin: 0 auto;
+    border: 3px solid #6990F0;
+`;
 
-export const Data = styled.div`
-    margin-top: auto;
-    width: 100%;
-
+export const Types = styled.div`
     display: flex;
-    flex-direction: column;
-        div {
-            &:nth-child(1) {
-                place-self: center;
-                margin-bottom: 20px;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
 
-                span {
-                    display: block;
-                    font-size: 1.2rem;
-                    text-shadow: 2px 1px #00000060;
-                    color: #f2f2f2;
-                    padding: 7px 15px;
-                    background: #6990F0;
-                    border-radius: 5px;
-                    box-shadow: 2px 2px #7F7F7F;
-                }
-            }
-
-            &:nth-child(2) {
-                margin-top: auto;
-
-                span {
-                    font-size: 1.4rem;
-                    color: #C9D3E0;
-                }
-            }
-        }
+    span {
+        display: block;
+        background: #6990F0;
+        width: max-content;
+        padding: 5px 7px;
+        border-radius: 3px;
+        color: #D0D6E0;
+        text-shadow: 1px 1px #424242;
+        box-shadow: 2px 2px #131313;
+        font-size: 1rem !important;
     }
 `;

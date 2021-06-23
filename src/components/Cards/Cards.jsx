@@ -1,10 +1,19 @@
-import { Container } from './styles.js'
+import { useState, useEffect  } from 'react'
+import { Container } from './styles'
 import Card from '../../components/Card/Card'
 
-export default function Cards(props){
-        return(
-            <Container>
-                <Card></Card>
-            </Container>
-        );
-} 
+import api  from '../../api/api'
+
+function Cards(){  
+          
+    return (
+      <Container>
+        {/* {items.map((item, i) => (
+          <Card key={i} name={item.name} url={item.url}/>
+        ))} */}
+        <Card/>
+      </Container>
+    );
+}
+
+export default Cards;

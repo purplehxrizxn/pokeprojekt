@@ -1,29 +1,33 @@
 import { 
-    Container, CardTitle,
-    Data, Sprite
-} from './styles.js'
+    Container, Sprite, Figure, Types
+} from './styles'
+import { useState, useEffect  } from 'react'
 
 export default function Card(props) {
+
+
     return(
         <Container>
-            <CardTitle>
-                Blastoise
-            </CardTitle>
-
-            <Sprite>
-                <div></div>
-            </Sprite>
-
-        <Data>
             <div>
-                <span>Water</span>
-            </div>
+                <p>
+                    Gen II
+                </p>
 
-            <div>
-                <span>Gen I</span>
+                <Sprite>
+                    <span>
+                        #197
+                    </span>
+
+                    <Figure>
+                        <img src="https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png" alt="" />
+                    </Figure>
+
+                    <Types>
+                        <span> Water </span>
+                    </Types>
+                </Sprite>
+                <h2>{props.name}</h2>
             </div>
-        </Data>
-            
         </Container>
     );
 }

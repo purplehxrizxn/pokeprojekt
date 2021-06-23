@@ -1,14 +1,23 @@
 import React from 'react'
 import GlobalStyle from './globals.style.js'
-import Body from './components/Body/Body'
+
+/* Importar os componentes na ordem em que foram criados
+  (de baixo pra cima)
+*/
+
+import Header from './components/Header/Header'
 import Cards from './components/Cards/Cards'
-import Card from './components/Card/Card'
+import Body from './components/Body/Body'
+import Container from './components/Container/Container'
 
 
 function App() {
   return (
     <Body>
-    <Cards />    
+      <Container>
+        <Header />
+        <Cards />    
+      </Container>
       <GlobalStyle/>
     </Body>
   );
