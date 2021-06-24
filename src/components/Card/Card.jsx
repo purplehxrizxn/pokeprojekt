@@ -1,10 +1,8 @@
 import { 
     Container, Sprite, Figure, Types
 } from './styles'
-import { useState, useEffect  } from 'react'
 
 export default function Card(props) {
-
 
     return(
         <Container>
@@ -15,15 +13,19 @@ export default function Card(props) {
 
                 <Sprite>
                     <span>
-                        #197
+                        #{props.id}
                     </span>
 
                     <Figure>
-                        <img src="https://pokeres.bastionbot.org/images/pokemon/${pokeID}.png" alt="" />
+                        <img src={props.sprite} alt="" />
                     </Figure>
 
                     <Types>
-                        <span> Water </span>
+                        {props.types.map(
+                            (type, i) => {
+                                return <span key={i}>{type.type.name}</span>
+                            }
+                        )}
                     </Types>
                 </Sprite>
                 <h2>{props.name}</h2>

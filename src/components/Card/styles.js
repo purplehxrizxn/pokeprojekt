@@ -52,6 +52,9 @@ export const Figure = styled.div`
     width: 80%;
     margin: 0 auto;
     border: 3px solid #6990F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const Types = styled.div`

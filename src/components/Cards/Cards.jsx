@@ -1,19 +1,26 @@
-import { useState, useEffect  } from 'react'
 import { Container } from './styles'
 import Card from '../../components/Card/Card'
-
-import api  from '../../api/api'
+import pokemons  from '../../api/api'
 
 function Cards(){  
+
+  console.log(pokemons);
           
-    return (
-      <Container>
-        {/* {items.map((item, i) => (
-          <Card key={i} name={item.name} url={item.url}/>
-        ))} */}
-        <Card/>
-      </Container>
-    );
+  return (
+    <Container>
+      {pokemons.map((item, i) => (
+        <Card 
+
+          key={i} 
+          name={item.name} 
+          id={item.order}
+          sprite={item.sprites.front_default}
+          types={item.types}
+
+        />
+      ))}
+    </Container>
+  );
 }
 
 export default Cards;

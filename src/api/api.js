@@ -4,4 +4,31 @@ const api = axios.create({
     baseURL: "https://pokeapi.co/api/v2/"
 })
 
-export default api;
+const pokemons = [];
+
+async function returnPokemons(array){
+    api.get('pokemon?limit=151')
+    .then(res => res.data.results)
+    .then(
+        result => {
+            result.forEach( pokemon => {
+                api.get(`pokemon/${pokemon.name}`)
+                .then( res => res.data)
+                .then(
+                    result => {
+                        array.push(result)
+                    },
+                    error => {console.log('erro!')}
+                )
+            });
+        },
+        error => {
+            console.log(error);
+        }
+    )
+    return array;
+}
+
+returnPokemons(pokemons);
+
+export default pokemons;
