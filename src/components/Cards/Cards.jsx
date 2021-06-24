@@ -4,7 +4,7 @@ import pokemons  from '../../api/api'
 
 function Cards(){  
 
-  // console.log(pokemons);
+  console.log(pokemons);
           
   return (
     <Container>

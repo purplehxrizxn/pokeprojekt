@@ -27,14 +27,14 @@ export default function Card(props) {
                         #{props.id}
                     </span>
 
-                    <Figure>
+                    <Figure className={props.types[0].type.name}>
                         <img src={props.sprite} alt="" />
                     </Figure>
 
                     <Types>
                         {props.types.map(
                             (type, i) => {
-                                return <span key={i}>{type.type.name.toUpperCase()}</span>
+                                return <span key={i} className={type.type.name}>{type.type.name.toUpperCase()}</span>
                             }
                         )}
                     </Types>

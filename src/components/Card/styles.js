@@ -51,10 +51,82 @@ export const Figure = styled.div`
     height: 70%;
     width: 80%;
     margin: 0 auto;
-    border: 3px solid #6990F0;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.normal {
+        border: 3px solid #A5AB76;
+    }
+
+    &.fighting {
+        border: 3px solid #B72529;
+    }
+    
+    &.flying {
+        border: 3px solid #AD7EF0;
+    }
+
+    &.poison {
+        border: 3px solid #98269B;
+    }
+    
+    &.ground {
+        border: 3px solid #D8C564;
+    }
+
+    &.rock {
+        border: 3px solid #AFA534;
+    }
+
+    &.bug {
+        border: 3px solid #A1C014;
+    }
+
+    &.ghost {
+        border: 3px solid #734A98;
+    }
+
+    &.steel {
+        border: 3px solid #B9B4CF;
+    }
+
+    &.fire {
+        border: 3px solid #E6802E;
+    }
+
+    &.water {
+        border: 3px solid #6990F0;
+    }
+
+    &.grass {
+        border: 3px solid #75CF49;
+    }
+
+    &.electric {
+        border: 3px solid #EED727;
+    }
+
+    &.psychic {
+        border: 3px solid #EE4788;
+    }
+
+    &.ice {
+        border: 3px solid #9ED8D7;
+    }
+
+    &.dark {
+        border: 3px solid #6B5847;
+    }
+
+    &.fairy {
+        border: 3px solid #FA41D5;
+    }
+
+    &.dragon {
+        border: 3px solid #8200FA;
+    }
+
 `;
 
 export const Types = styled.div`
@@ -65,7 +137,6 @@ export const Types = styled.div`
 
     span {
         display: block;
-        background: #6990F0;
         width: max-content;
         padding: 5px 7px;
         border-radius: 3px;
@@ -73,5 +144,78 @@ export const Types = styled.div`
         text-shadow: 1px 1px #424242;
         box-shadow: 2px 2px #131313;
         font-size: .8rem !important;
+
+        &.normal {
+            background: #A5AB76;
+        }
+
+        &.fighting {
+            background: #B72529;
+        }
+        
+        &.flying {
+            background: #AD7EF0;
+        }
+
+        &.poison {
+            background: #98269B;
+        }
+        
+        &.ground {
+            background: #D8C564;
+        }
+
+        &.rock {
+            background: #AFA534;
+        }
+
+        &.bug {
+            background: #A1C014;
+        }
+
+        &.ghost {
+            background: #734A98;
+        }
+
+        &.steel {
+            background: #B9B4CF;
+        }
+
+        &.fire {
+            background: #E6802E;
+        }
+
+        &.water {
+            background: #6990F0;
+        }
+
+        &.grass {
+            background: #75CF49;
+        }
+
+        &.electric {
+            background: #EED727;
+        }
+
+        &.psychic {
+            background: #EE4788;
+        }
+
+        &.ice {
+            background: #9ED8D7;
+        }
+
+        &.dark {
+            background: #6B5847;
+        }
+
+        &.fairy {
+            background: #FA41D5;
+        }
+
+        &.dragon {
+            background: #8200FA;
+        }
+
     }
 `;
