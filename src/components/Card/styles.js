@@ -72,6 +72,6 @@ export const Types = styled.div`
         color: #D0D6E0;
         text-shadow: 1px 1px #424242;
         box-shadow: 2px 2px #131313;
-        font-size: 1rem !important;
+        font-size: .8rem !important;
     }
 `;

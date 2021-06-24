@@ -7,7 +7,7 @@ const api = axios.create({
 const pokemons = [];
 
 async function returnPokemons(array){
-    api.get('pokemon?limit=151')
+    api.get('pokemon?limit=3')
     .then(res => res.data.results)
     .then(
         result => {
@@ -23,7 +23,7 @@ async function returnPokemons(array){
             });
         },
         error => {
-            console.log(error);
+            console.log('erro!');
         }
     )
     return array;
