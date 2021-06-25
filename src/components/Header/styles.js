@@ -4,15 +4,21 @@ export const Container = styled.div`
     width: 100%;
     padding-top: 50px;
     padding-bottom: 25px;
+    text-shadow: 3px 3px #131313;
+
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: flex-end;
     
     h1 {
-        font-size: 2.4rem;
+        font-size: 3.2rem;
         color: white;
         text-align: center;
         letter-spacing: 2px;
         font-weight: 100;
-        margin-bottom: 40px;
-        text-shadow: 3px 3px #131313;
+        margin-bottom: 55px;
+        text-shadow: 4px 4px #131313;
     }
 `; 
 
@@ -30,21 +36,22 @@ export const Main = styled.div`
     color: #E0DEF0;
     text-align: center;
     margin-bottom: 10px;
+    width: 100%;
 
     span {
         margin-bottom: 12px;
     }
 
     input {
-        width: 400px;
+        width: 70%;
         margin: 0 auto;
         padding-top: 7px;
         padding-bottom: 7px;
         padding-left: 10px;
         border-radius: 5px;
         background: #E0DEF0;
-        border: 2px solid #6468B7;
-        box-shadow: 3px 3px #131313;
+        border: 4px solid #6468B7;
+        box-shadow: 6px 6px #131313;
         color: #1E1E1E;
         font-size: 1.2rem;
 
@@ -74,11 +81,15 @@ export const OrderBy = styled.div`
     font-size: 1.2rem;
     width: max-content;
     margin: 0 auto;
+    margin-top: 15px;
 
     span {
         color: #E0DEF0;
+        margin-top: 10px;
         span {
             color: #6468B7;
+            font-size: 1.6rem;
+            text-shadow: 3px 3px #131313;
         }
     }
 

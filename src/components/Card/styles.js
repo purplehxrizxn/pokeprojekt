@@ -2,6 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     background: #191919;
+    transition: .2s;
+    box-shadow: 4px 4px #131313;
+
+    
+    &:hover {
+        box-shadow: 6px 6px #131313;;
+    }
 
     min-width: 330px;
     max-width: 330px;
@@ -131,7 +138,7 @@ export const Figure = styled.div`
 
 export const Types = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 80%;
     margin: 0 auto;
 
@@ -144,6 +151,16 @@ export const Types = styled.div`
         text-shadow: 1px 1px #424242;
         box-shadow: 2px 2px #131313;
         font-size: .8rem !important;
+        transition: .2s;
+
+        &:nth-child(2){
+            margin-left: 10px;
+        }
+
+        &:hover {
+            box-shadow: 2px 2px black;
+            cursor: pointer;
+        }
 
         &.normal {
             background: #A5AB76;

@@ -4,22 +4,24 @@ import {
 
 export default function Card(props) {
 
-    function upperFirstLetter(string){
-
-        let str = string.split('');
-        let newStr = '';
-
-        str.forEach( (letter, i) => {
-            (i === 0) ? newStr += letter.toUpperCase() : newStr += letter;
-        });
-        return newStr;
+    function capitalize(string){
+        return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
     }
+
+    // function returnGen(game){
+    //     switch (game) {
+    //         case 'red':
+    //         case 'gold':
+
+    //         default: 'none';
+    //     }
+    // }
 
     return(
         <Container>
             <div>
                 <p>
-                    Gen II
+                    {props.gen}
                 </p>
 
                 <Sprite>
@@ -39,7 +41,7 @@ export default function Card(props) {
                         )}
                     </Types>
                 </Sprite>
-                <h2>{upperFirstLetter(props.name)}</h2>
+                <h2>{capitalize(props.name)}</h2>
             </div>
         </Container>
     );
