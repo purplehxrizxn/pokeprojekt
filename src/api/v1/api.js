@@ -26,7 +26,7 @@ async function returnPokemons(array){
             console.log('erro!');
         }
     )
-    return array;
+    console.log(array);
 }
 
 returnPokemons(pokemons);

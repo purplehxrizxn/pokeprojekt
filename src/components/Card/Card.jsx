@@ -8,20 +8,48 @@ export default function Card(props) {
         return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
     }
 
-    // function returnGen(game){
-    //     switch (game) {
-    //         case 'red':
-    //         case 'gold':
+     function returnGen(game){
+         switch (game) {
+            case 'red':
+                 return 'Gen I';
+            case 'gold':
+                 return 'Gen II';
+            case 'ruby':
+                 return 'Gen III';
+            case 'diamond':
+                 return 'Gen IV';
+            case 'black':
+                 return 'Gen V';
+            case 'x':
+                 return 'Gen VI';
+            case 'sun':
+                 return 'Gen VII';
+            case 'sword':
+                 return 'Gen VIII';
+             default: 
+                    return 'none';
+         }
+    }
 
-    //         default: 'none';
-    //     }
+    // const sprites = Object.values(props.sprite);
+
+    // function getSprites(obj) {
+    //     const data = obj.map(
+    //         (sprite) => {
+    //             return sprite !== null ? sprite : '';
+    //         }
+    //     );
+
+    //     return data;
     // }
+
+    // console.log(getSprites(sprites));
 
     return(
         <Container>
             <div>
                 <p>
-                    {props.gen}
+                    { returnGen(props.gen) }
                 </p>
 
                 <Sprite>

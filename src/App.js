@@ -11,7 +11,7 @@ import Body from './components/Body/Body'
 import Container from './components/Container/Container'
 
 
-function App() {
+export default function App() {
   return (
     <Body>
       <Container>
@@ -23,4 +23,3 @@ function App() {
   );
 }
 
-export default App;

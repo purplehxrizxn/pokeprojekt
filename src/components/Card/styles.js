@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     background: #191919;
-    transition: .2s;
-    box-shadow: 4px 4px #131313;
-
+    transition: .3s ease-in-out;
+    box-shadow: 1px 5px #131313;
     
     &:hover {
-        box-shadow: 6px 6px #131313;;
+        box-shadow: 3px 10px #131313;
+        transform: translateY(-5px);
     }
 
     min-width: 330px;
@@ -31,6 +31,7 @@ export const Container = styled.div`
         font-size: 1.4rem;
         margin-top: 30px;
         letter-spacing: 1px;
+        color: #eee;
     }
 
     @media screen and (max-width: 540px) {
@@ -47,6 +48,7 @@ export const Sprite = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 1px solid #2d2d2d;
 
     span {
         font-size: 1.2rem;

@@ -51,7 +51,7 @@ export const Main = styled.div`
         border-radius: 5px;
         background: #E0DEF0;
         border: 4px solid #6468B7;
-        box-shadow: 6px 6px #131313;
+        box-shadow: 0 6px #131313;
         color: #1E1E1E;
         font-size: 1.2rem;
 
@@ -62,6 +62,7 @@ export const Main = styled.div`
         &::placeholder {
             font-size: 1rem;
             color: #6468B7;
+            font-weight: bold;
         }
     }
 
@@ -100,8 +101,8 @@ export const OrderBy = styled.div`
         padding-left:  10px;
         border-radius: 5px;
         background: #E0DEF0;
-        border: 2px solid #6468B7;
-        box-shadow: 3px 3px #131313;
+        border: 3px solid #6468B7;
+        box-shadow: 0 5px #131313;
         color: #6468B7;
         font-size: 1.2rem;
         appearance: none;
@@ -112,6 +113,7 @@ export const OrderBy = styled.div`
 
         &::placeholder {
             color: #6468B7;
+            font-weight: bold;
         }
     }
 
