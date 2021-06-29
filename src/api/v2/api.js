@@ -1,10 +1,8 @@
 import axios from 'axios';
-
-
 export default class Api {
 
-    static async getAllPokemons(limit) {
-        const response = await (await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)).data.results;
+    static async getAllPokemon() {
+        const response = await (await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=300`)).data.results;
         const data = Promise.all(
             response.map( async (pokemon) => await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)).data)
         )
@@ -12,9 +10,20 @@ export default class Api {
         return data;
     }
 
-    static async getPokemon(name) {
-        const response = await (await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)).data;
+    static async filterPokemonType(pokeType = '') {
+        const response = await this.getAllPokemon();
+        const result = []
 
-        return response;
+        if (!pokeType) {
+            return response;
+        }
+
+        response.forEach( pkm => {
+            pkm.types.forEach(
+                type => type.type.name === pokeType ? result.push(pkm) : false
+            )
+        })
+
+        return result;
     }
 }

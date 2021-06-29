@@ -20,6 +20,7 @@ export default function Header(props) {
                         or <span>Order By</span>:
                     </span>
                     <select name="" id="">
+                        <option defaultValue >Select</option>
                         <option value="">Region</option>
                         <option value="">Type</option>
                         <option value="">Generation</option>

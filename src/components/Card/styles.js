@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.div`
     background: #191919;
     transition: .3s ease-in-out;
-    box-shadow: 1px 5px #131313;
+    box-shadow: 0 5px #131313;
     
     &:hover {
-        box-shadow: 3px 10px #131313;
+        box-shadow: 0 10px #131313;
         transform: translateY(-5px);
     }
 
@@ -49,6 +49,7 @@ export const Sprite = styled.div`
     flex-direction: column;
     justify-content: space-between;
     border: 1px solid #2d2d2d;
+    margin: 0 auto;
 
     span {
         font-size: 1.2rem;

@@ -12,22 +12,36 @@ export default function Card(props) {
          switch (game) {
             case 'red':
                  return 'Gen I';
+
             case 'gold':
                  return 'Gen II';
-            case 'ruby':
+
+            case 'omega-ruby':
+            case 'leafgreen':
+            case 'firered':
+            case 'emerald':
                  return 'Gen III';
+
             case 'diamond':
+            case 'ruby':
+            case 'platinum':
                  return 'Gen IV';
+
             case 'black':
+            case 'black-2':
                  return 'Gen V';
+
             case 'x':
                  return 'Gen VI';
+
             case 'sun':
                  return 'Gen VII';
+
             case 'sword':
                  return 'Gen VIII';
+
              default: 
-                    return 'none';
+                    return 'Variant';
          }
     }
 

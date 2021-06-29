@@ -53,23 +53,34 @@ export const Main = styled.div`
         border: 4px solid #6468B7;
         box-shadow: 0 6px #131313;
         color: #1E1E1E;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
 
         &:focus, &:hover {
             outline: none;
         }
 
         &::placeholder {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #6468B7;
             font-weight: bold;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        input {
+            font-size: .8rem;
+            line-height: 1.3;
+            padding-top: 12px;
+            width: 85%;
         }
     }
 
     @media screen and (max-width: 540px) {
         input {
             width: 100%;
-            font-size: 1rem;
+            font-size: .8rem;
+            line-height: 1.3;
+            padding-top: 12px;
         }
 
         span {
@@ -83,6 +94,7 @@ export const OrderBy = styled.div`
     width: max-content;
     margin: 0 auto;
     margin-top: 15px;
+    display: flex;
 
     span {
         color: #E0DEF0;
@@ -114,6 +126,7 @@ export const OrderBy = styled.div`
         &::placeholder {
             color: #6468B7;
             font-weight: bold;
+            font-size: 1.6rem;
         }
     }
 
@@ -125,3 +138,13 @@ export const OrderBy = styled.div`
         }
     }
 `; 
+
+export const SelectWrapper = styled.div`
+    position: relative;
+
+    label {
+        position: absolute;
+        right: 10px;
+        top: 3px;
+    }
+`;

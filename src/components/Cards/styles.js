@@ -38,6 +38,10 @@ export const Container  = styled.div`
         > :nth-child(odd) {
             margin-right: 0;
         }
+        & {
+            width: 90%;
+            margin: 0 auto;
+        }
     }
 `;
 
@@ -67,4 +71,26 @@ export const Loading = styled.div`
         width: 100px;
         height: 100px;
     }
+`;
+
+export const LoadMore = styled.button`
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    padding: 8px 10px;
+    border: 2px solid #6468B7;
+    border-radius: 5px;
+    outline: none;
+    color: #6468B7;
+    background: #E0DEF0;
+    box-shadow: 0 3px #131313;
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 6px #131313;
+        transform: translateY(-3px);
+    }
+
 `;
