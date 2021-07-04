@@ -4,6 +4,18 @@ import {
 
 export default function Card(props) {
 
+    function returnWithZeros(number) {
+        let result = number.toString();
+
+        if (result.length === 1) {
+            return `#00${result}`;
+        } else if (result.length === 2) {
+            return `#0${result}`;
+        } else {
+            return `#${result}`;
+        }
+    }
+
     function capitalize(string){
         return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
     }
@@ -54,7 +66,7 @@ export default function Card(props) {
 
                 <Sprite>
                     <span>
-                        {props.id.toString().length  === 1 ? `#00${props.id}` : props.id.toString().length === 2 ? `#0${props.id}` : `#${props.id}`}
+                        { returnWithZeros(props.id) }
                     </span>
 
                     <Figure className={props.types[0].type.name}>

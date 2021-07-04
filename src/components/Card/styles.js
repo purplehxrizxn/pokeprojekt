@@ -12,8 +12,7 @@ export const Container = styled.div`
 
     min-width: 330px;
     max-width: 330px;
-    min-height: 330px;
-    max-height: 330px;
+    max-height: 310px;
     border-radius: 5px;
     padding: 30px;
     display: flex;
@@ -29,8 +28,8 @@ export const Container = styled.div`
     }
 
     h2 {
-        font-size: 1.4rem;
-        margin-top: 30px;
+        font-size: 1.3rem;
+        margin-top: 25px;
         letter-spacing: 1px;
         color: #eee;
         text-align: left;

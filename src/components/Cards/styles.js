@@ -131,7 +131,7 @@ export const Main = styled.div`
         background: #E0DEF0;
         border: 4px solid #6468B7;
         box-shadow: 0 6px #131313;
-        color: #1E1E1E;
+        color: #2F2F2F;
         font-size: 1.4rem;
 
         &:focus, &:hover {
@@ -140,7 +140,7 @@ export const Main = styled.div`
 
         &::placeholder {
             font-size: 1.2rem;
-            color: #6468B7;
+            color: #6468B795;
             font-weight: bold;
         }
     }
@@ -152,8 +152,6 @@ export const Main = styled.div`
             padding-top: 5px;
             width: 85%;
         }
-
-
     }
 
     @media screen and (max-width: 540px) {
@@ -229,10 +227,20 @@ export const OrderBy = styled.div`
     }
 
     @media screen and (max-width: 540px) {
+
+        & {
+            flex-direction: column;
+            align-items: center;
+        }
+
         select {
             font-size: 1rem;
-            width: 90px;
-            margin-left: 7px;
+            width: 120px;
+            margin-left: 0px;
+        }
+
+        .select {
+            margin-top: 10px;
         }
     }
 `; 

@@ -59,7 +59,7 @@ export default function Cards(){
                             setLoading(true); 
                           }
                         }>
-                            <option defaultValue >Select</option>
+                            <option defaultValue >All</option>
                             <option value="bug">Bug</option>
                             <option value="dark">Dark</option>
                             <option value="dragon">Dragon</option>
@@ -109,7 +109,7 @@ export default function Cards(){
                             setLoading(true); 
                           }
                         }>
-                            <option defaultValue value="" >Select</option>
+                            <option defaultValue value="" >All</option>
                             <option value="bug">Bug</option>
                             <option value="dark">Dark</option>
                             <option value="dragon">Dragon</option>
