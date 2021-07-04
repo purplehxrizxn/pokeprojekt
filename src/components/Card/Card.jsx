@@ -41,23 +41,9 @@ export default function Card(props) {
                  return 'Gen VIII';
 
              default: 
-                    return 'Variant';
+                    return 'Special';
          }
     }
-
-    // const sprites = Object.values(props.sprite);
-
-    // function getSprites(obj) {
-    //     const data = obj.map(
-    //         (sprite) => {
-    //             return sprite !== null ? sprite : '';
-    //         }
-    //     );
-
-    //     return data;
-    // }
-
-    // console.log(getSprites(sprites));
 
     return(
         <Container>
@@ -68,7 +54,7 @@ export default function Card(props) {
 
                 <Sprite>
                     <span>
-                        #{props.id}
+                        {props.id.toString().length  === 1 ? `#00${props.id}` : props.id.toString().length === 2 ? `#0${props.id}` : `#${props.id}`}
                     </span>
 
                     <Figure className={props.types[0].type.name}>

@@ -23,7 +23,8 @@ export const Container = styled.div`
     color: #C9D3E0;
 
     p {
-        font-size: 1.2rem;
+        font-size: 0.9rem;
+        text-align: right;
         margin-bottom: 10px;
     }
 
@@ -32,6 +33,7 @@ export const Container = styled.div`
         margin-top: 30px;
         letter-spacing: 1px;
         color: #eee;
+        text-align: left;
     }
 
     @media screen and (max-width: 540px) {
@@ -52,7 +54,7 @@ export const Sprite = styled.div`
     margin: 0 auto;
 
     span {
-        font-size: 1.2rem;
+        font-size: .9rem;
     }
 `;
 

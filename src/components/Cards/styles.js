@@ -94,3 +94,155 @@ export const LoadMore = styled.button`
     }
 
 `;
+
+export const Search = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        & {
+            padding-bottom: 25px;
+        }
+    }   
+`; 
+
+export const Main = styled.div`
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+    color: #E0DEF0;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+
+    span {
+        margin-bottom: 12px;
+    }
+
+    input {
+        width: 70%;
+        margin: 0 auto;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 10px;
+        border-radius: 5px;
+        background: #E0DEF0;
+        border: 4px solid #6468B7;
+        box-shadow: 0 6px #131313;
+        color: #1E1E1E;
+        font-size: 1.4rem;
+
+        &:focus, &:hover {
+            outline: none;
+        }
+
+        &::placeholder {
+            font-size: 1.2rem;
+            color: #6468B7;
+            font-weight: bold;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        input {
+            font-size: 1.4rem;
+            line-height: 1.3;
+            padding-top: 5px;
+            width: 85%;
+        }
+
+
+    }
+
+    @media screen and (max-width: 540px) {
+        input {
+            width: 100%;
+            font-size: .8rem;
+            line-height: 1.3;
+            padding-top: 12px;
+        }
+
+        span {
+            line-height: 1.3;
+        }
+    }
+`; 
+
+export const OrderBy = styled.div`
+    font-size: 1.2rem;
+    width: max-content;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: flex;
+
+    span {
+        color: #E0DEF0;
+        margin-top: 10px;
+        letter-spacing: 1px;
+
+        span {
+            color: #6468B7;
+            text-shadow: 3px 3px #131313;
+        }
+    }
+
+    .select {
+        position: relative;
+
+        svg {
+            position: absolute;
+            right: 10px;
+            top: 30%;
+            color: #1e1e1e;
+
+            path {
+                stroke-width: 125px;
+            }
+        }
+    }
+
+    select {
+        width: 150px;
+        margin-left: 15px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left:  10px;
+        border-radius: 5px;
+        background: #E0DEF0;
+        border: 3px solid #6468B7;
+        box-shadow: 0 5px #131313;
+        color: #6468B7;
+        font-size: 1.2rem;
+        appearance: none;
+
+        &:focus, &:hover {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #6468B7;
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        select {
+            font-size: 1rem;
+            width: 90px;
+            margin-left: 7px;
+        }
+    }
+`; 
+
+export const SelectWrapper = styled.div`
+    position: relative;
+
+    label {
+        position: absolute;
+        right: 10px;
+        top: 3px;
+    }
+`;
