@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import 
 { 
-  Container, Error, Loading, 
+  Container, Error, Loading, NotFound,
   LoadMore, Search, OrderBy, Main 
 } from './styles'
 import gif from '../../assets/loading.gif'
@@ -16,8 +16,29 @@ export default function Cards(){
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]);
-  const [limit, setLimit] = useState(20);
-  const [filter, setFilter] = useState('');
+  const [pokemonFilter, setPokemonFilter] = useState([]);
+  const [limit, setLimit] = useState(10);
+
+  function filterByType(searchContent = 'null', byInput = false) {
+    const result = [];
+
+    if(!byInput) {
+      if (searchContent === 'null') {
+        setPokemonFilter(pokemon);
+      } else {
+        pokemon.forEach( pkm => {
+          pkm.types.forEach(
+              type => type.type.name === searchContent ? result.push(pkm) : false
+          )
+        })
+        setPokemonFilter(result);
+      }
+    } else {
+
+      pokemon.forEach( pkm => (pkm.species.name).indexOf(searchContent.replace(' ', '').toLowerCase()) > -1 ? result.push(pkm) : false);
+      setPokemonFilter(result);
+    }
+  }
 
   function handleArray(array, limit){
     let result = array.slice(0, limit);
@@ -25,18 +46,26 @@ export default function Cards(){
     return result;
   }
 
+  function handleFilterChange(e) {
+    filterByType(e.target.value);
+  }
+
+  function handleInputChange(e){
+    filterByType(e.target.value, true);
+  }
+
   useEffect(() => {
-    Api.filterPokemonType(filter).then(
+    Api.getAllPokemon().then(
       (success) => {
         setLoading(false);
         setPokemon(success);
+        setPokemonFilter(success);
       },
       (error) => {
         setLoading(false);
         setError(error);
-      }
-    )
-  }, [filter]);
+      })
+  }, []);
 
   if(error){
     return (
@@ -44,18 +73,17 @@ export default function Cards(){
         <Search>
             <Main>
                 <span>Search for a Pokémon...</span>
-                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." name="" id="" />
+                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." name="search" id="" />
             </Main>
             <OrderBy>
                 <span>
                     or filter by<span> type</span>:
                 </span>
-                    <label htmlFor="select" className="select" style={{cursor: 'not-allowed'}}>
+                    <label htmlFor="select" className="select" style={{pointerEvents: 'none'}}>
                         <IoMdArrowDropdown />
                         <select name="" id="select" 
                           onChange={ 
                           (e) => {
-                            setFilter(e.target.value);
                             setLoading(true); 
                           }
                         }>
@@ -93,7 +121,7 @@ export default function Cards(){
         <Search>
             <Main>
                 <span>Search for a Pokémon...</span>
-                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." />
+                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." onChange={handleInputChange} />
             </Main>
 
             <OrderBy>
@@ -103,13 +131,8 @@ export default function Cards(){
                     <label htmlFor="select" className="select">
                         <IoMdArrowDropdown />
                         <select name="" id="select" 
-                          onChange={ 
-                          (e) => {
-                            setFilter(e.target.value);
-                            setLoading(true); 
-                          }
-                        }>
-                            <option defaultValue value="" >All</option>
+                          onChange={handleFilterChange}>
+                            <option defaultValue value="null" >All</option>
                             <option value="bug">Bug</option>
                             <option value="dark">Dark</option>
                             <option value="dragon">Dragon</option>
@@ -142,7 +165,7 @@ export default function Cards(){
         
         (<>
           <Container>
-          { handleArray(pokemon, limit).map((item, i) => (
+          { handleArray(pokemonFilter, limit).map((item, i) => (
             <Card 
     
               key={i} 
@@ -155,7 +178,8 @@ export default function Cards(){
             />
           )) }
           </Container>
-          {limit <= pokemon.length ? <><LoadMore onClick={ () => setLimit(limit + 20) }>Load more...</LoadMore></> : false}
+          {limit <= pokemonFilter.length ? <><LoadMore onClick={ () => setLimit(limit + 10) }>show more</LoadMore></> : false}
+          {!pokemonFilter.length ? <NotFound>We don't found any. <span>Try again.</span></NotFound> : false}
         </>
         )
         }

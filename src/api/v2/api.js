@@ -9,23 +9,4 @@ export default class Api {
 
         return data;
     }
-
-    static async filterPokemonType(pokeType = '', loading = true) {
-        const response = await this.getAllPokemon();
-        const result = []
-
-        if (!pokeType) {
-            return response;
-        }
-
-        response.forEach( pkm => {
-            pkm.types.forEach(
-                type => type.type.name === pokeType ? result.push(pkm) : false
-            )
-        })
-
-        loading = false;
-
-        return result;
-    }
 }

@@ -34,11 +34,6 @@ export const Container = styled.div`
         color: #eee;
         text-align: left;
     }
-
-    @media screen and (max-width: 540px) {
-        min-width: 100%;
-        max-width: 100%;
-    }
 `; 
 
 export const Sprite = styled.div`

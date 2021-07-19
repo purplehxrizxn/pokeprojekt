@@ -53,7 +53,7 @@ export default function Card(props) {
                  return 'Gen VIII';
 
              default: 
-                    return 'Special';
+                    return 'Variation';
          }
     }
 

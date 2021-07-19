@@ -254,3 +254,14 @@ export const SelectWrapper = styled.div`
         top: 3px;
     }
 `;
+
+export const NotFound = styled.h3`
+    text-align: center;
+    color: #d53b3b;
+    font-size: 1.2rem;
+    padding-top: 25px;
+
+    span {
+        color: #E0DEF0;
+    }
+`;
