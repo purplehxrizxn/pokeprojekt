@@ -10,11 +10,11 @@ export const Container = styled.div`
         transform: translateY(-5px);
     }
 
-    min-width: 330px;
-    max-width: 330px;
+    min-width: 310px;
+    max-width: 310px;
     max-height: 310px;
     border-radius: 5px;
-    padding: 30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

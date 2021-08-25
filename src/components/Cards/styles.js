@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const Container  = styled.div`
     display: flex;
@@ -14,6 +14,7 @@ export const Container  = styled.div`
 
     > :nth-child(odd) {
         margin-right: 20px;
+        margin-bottom: 20px;
     }
 
     > :last-child {
@@ -95,7 +96,24 @@ export const LoadMore = styled.button`
 
 `;
 
+const opacity = keyframes`
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+`;
+
+export const Wrapper = styled.div`
+    padding-bottom: 25px;
+    animation: ${opacity} .5s ease;
+`;
+
 export const Search = styled.div`
+    margin-top: 50px;
+    margin-bottom: 50px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -257,7 +275,7 @@ export const SelectWrapper = styled.div`
 
 export const NotFound = styled.h3`
     text-align: center;
-    color: #d53b3b;
+    color: #de1d1d;
     font-size: 1.2rem;
     padding-top: 25px;
 
