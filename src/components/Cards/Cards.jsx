@@ -1,13 +1,13 @@
-import { useEffect, useState, useContext } from 'react'
-import 
-{ 
+import { useEffect, useState } from 'react'
+
+import { 
   Container, Loading, NotFound,
   LoadMore, Search, OrderBy, Main, Wrapper 
 } from './styles'
+
 import gif from '../../assets/loading.gif'
 import Card from '../../components/Card/Card'
 import Api  from '../../api/v2/api'
-import { TypeContext } from '../../Context/TypeContext'
 
 import { IoMdArrowDropdown } from 'react-icons/io'
 
@@ -19,7 +19,6 @@ export default function Cards(){
   const [pokemon, setPokemon] = useState([]);
   const [pokemonFilter, setPokemonFilter] = useState([]);
   const [limit, setLimit] = useState(10);
-  const { type } = useContext(TypeContext);
 
   function handlePokemonFilter(searchContent = 'null', byInput = false) {
     const result = [];
@@ -60,10 +59,6 @@ export default function Cards(){
         setError(error);
       })
   }, []);
-
-  useEffect(() => {
-    handlePokemonFilter(type.name)
-  }, [ type ])
 
   if(!error){
     return (
@@ -125,7 +120,8 @@ export default function Cards(){
               sprite={sprites.front_default}
               types={types}
               gen={ ((game_indices[0]) ? game_indices[0].version.name : 'Special') }
-              
+              getFilter={ (e) => { handlePokemonFilter(e)} }
+
             />
           )) }
           </Container>

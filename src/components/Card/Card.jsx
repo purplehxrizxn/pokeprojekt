@@ -2,18 +2,14 @@ import {
     Container, Sprite, Figure, Types
 } from './styles'
 
-import { useContext } from 'react'
-import { TypeContext } from '../../Context/TypeContext'
-
 export default function Card({ 
     gen, 
     id, 
     name, 
     sprite, 
-    types 
+    types,
+    getFilter 
 }) {
-
-    const { setType } = useContext(TypeContext);
 
     function returnWithZeros(number) {
         let result = number.toString();
@@ -87,7 +83,7 @@ export default function Card({
                     <Types>
                         {types.map(
                             (type, i) => {
-                                return <span key={i} onClick={ () => setType({ name: type.type.name }) } className={type.type.name}>{type.type.name.toUpperCase()}</span>
+                                return <span key={i} onClick={ () => {getFilter(type.type.name)}  } className={type.type.name}>{type.type.name.toUpperCase()}</span>
                             }
                         )}
                     </Types>
