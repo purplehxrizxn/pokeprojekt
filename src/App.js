@@ -5,7 +5,6 @@ import Cards from './components/Cards/Cards'
 import Body from './components/Body/Body'
 import Container from './components/Container/Container'
 
-
 export default function App() {
   return (
     <Body>

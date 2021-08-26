@@ -26,6 +26,7 @@ export default function Cards(){
     if(!byInput) {
       if (searchContent === 'null') {
         setPokemonFilter(pokemon);
+        setLimit(10);
       } else {
         pokemon.forEach( pkm => {
           pkm.types.forEach(
@@ -33,11 +34,13 @@ export default function Cards(){
           )
         })
         setPokemonFilter(result);
+        setLimit(10);
       }
     } else {
       pokemon.forEach( 
         pkm => (pkm.species.name).indexOf(searchContent.replace(' ', '').toLowerCase()) > -1 ? result.push(pkm) : false);
       setPokemonFilter(result);
+      setLimit(10);
     }
   }
 
@@ -77,7 +80,7 @@ export default function Cards(){
                         <IoMdArrowDropdown />
                         <select name="" id="select" 
                           onChange={ (e) => { handlePokemonFilter(e.target.value) } }>
-                            <option defaultValue disabled value="">...</option>
+                            <option selected disabled value="">...</option>
                             <option value="null">All</option>
                             <option value="bug">Bug</option>
                             <option value="dark">Dark</option>
