@@ -275,7 +275,7 @@ export const SelectWrapper = styled.div`
 
 export const NotFound = styled.h3`
     text-align: center;
-    color: #de1d1d;
+    color: #B72529;
     font-size: 1.2rem;
     padding-top: 25px;
 

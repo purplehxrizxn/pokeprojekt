@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import 
 { 
   Container, Loading, NotFound,
@@ -7,6 +7,7 @@ import
 import gif from '../../assets/loading.gif'
 import Card from '../../components/Card/Card'
 import Api  from '../../api/v2/api'
+import { TypeContext } from '../../Context/TypeContext'
 
 import { IoMdArrowDropdown } from 'react-icons/io'
 
@@ -18,8 +19,9 @@ export default function Cards(){
   const [pokemon, setPokemon] = useState([]);
   const [pokemonFilter, setPokemonFilter] = useState([]);
   const [limit, setLimit] = useState(10);
+  const { type } = useContext(TypeContext);
 
-  function filterByType(searchContent = 'null', byInput = false) {
+  function handlePokemonFilter(searchContent = 'null', byInput = false) {
     const result = [];
 
     if(!byInput) {
@@ -59,36 +61,17 @@ export default function Cards(){
       })
   }, []);
 
-  if(error){
-    return (
-      <>
-        <Search>
-            <Main>
-                <span>Search for a Pokémon...</span>
-                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." name="search" id="" />
-            </Main>
-            <OrderBy>
-                <span>
-                    or filter by<span> type</span>:
-                </span>
-                    <label htmlFor="select" className="select" style={{pointerEvents: 'none', cursor: 'not-allowed'}}>
-                        <IoMdArrowDropdown />
-                        <select id="select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                    </label>
-            </OrderBy>
-        </Search>
-          <NotFound>Error: {error}<span> Press F5 to reload.</span></NotFound>
-      </>
-    )
-  } else {
+  useEffect(() => {
+    handlePokemonFilter(type.name)
+  }, [ type ])
+
+  if(!error){
     return (
       <Wrapper>
         <Search>
             <Main>
                 <span>Search for a Pokémon...</span>
-                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." onChange={(e) => {filterByType(e.target.value, true)}} />
+                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." onChange={ ({ target }) => { handlePokemonFilter(target.value, true)} } />
             </Main>
 
             <OrderBy>
@@ -98,8 +81,9 @@ export default function Cards(){
                     <label htmlFor="select" className="select">
                         <IoMdArrowDropdown />
                         <select name="" id="select" 
-                          onChange={(e) => {filterByType(e.target.value)}}>
-                            <option defaultValue value="null" >All</option>
+                          onChange={ (e) => { handlePokemonFilter(e.target.value) } }>
+                            <option defaultValue disabled value="">...</option>
+                            <option value="null">All</option>
                             <option value="bug">Bug</option>
                             <option value="dark">Dark</option>
                             <option value="dragon">Dragon</option>
@@ -132,16 +116,16 @@ export default function Cards(){
         
         (<>
           <Container>
-          { handleArray(pokemonFilter, limit).map((item, i) => (
+          { handleArray(pokemonFilter, limit).map(({ name, id, sprites, types, game_indices}, i) => (
             <Card 
     
               key={i} 
-              name={item.name} 
-              id={item.id}
-              sprite={item.sprites.front_default}
-              types={item.types}
-              gen={( item.game_indices[0]) ? item.game_indices[0].version.name : 'Special'}
-    
+              name={name} 
+              id={id}
+              sprite={sprites.front_default}
+              types={types}
+              gen={ ((game_indices[0]) ? game_indices[0].version.name : 'Special') }
+              
             />
           )) }
           </Container>
@@ -160,6 +144,29 @@ export default function Cards(){
         )}
         
       </Wrapper>
+    );
+  } else {
+    return (
+      <>
+        <Search>
+            <Main>
+                <span>Search for a Pokémon...</span>
+                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." name="search" id="" />
+            </Main>
+            <OrderBy>
+                <span>
+                    or filter by<span> type</span>:
+                </span>
+                    <label htmlFor="select" className="select" style={{pointerEvents: 'none', cursor: 'not-allowed'}}>
+                        <IoMdArrowDropdown />
+                        <select id="select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                    </label>
+            </OrderBy>
+        </Search>
+          <NotFound>Error: {error}<span> Press F5 to reload.</span></NotFound>
+      </>
     );
   }
 }

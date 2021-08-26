@@ -14,7 +14,7 @@ export default function Container(props){
             setTimeout( () => { 
                 setTurnedOn(true);
                 setAnimation(false);
-            }, 5000);
+            }, 6000);
         }
     }, [animation])
 

@@ -2,7 +2,18 @@ import {
     Container, Sprite, Figure, Types
 } from './styles'
 
-export default function Card(props) {
+import { useContext } from 'react'
+import { TypeContext } from '../../Context/TypeContext'
+
+export default function Card({ 
+    gen, 
+    id, 
+    name, 
+    sprite, 
+    types 
+}) {
+
+    const { setType } = useContext(TypeContext);
 
     function returnWithZeros(number) {
         let result = number.toString();
@@ -53,7 +64,7 @@ export default function Card(props) {
                  return 'Gen VIII';
 
              default: 
-                    return 'Variation';
+                return 'Variation';
          }
     }
 
@@ -61,27 +72,27 @@ export default function Card(props) {
         <Container>
             <div>
                 <p>
-                    { returnGen(props.gen) }
+                    { returnGen(gen) }
                 </p>
 
                 <Sprite>
                     <span>
-                        { returnWithZeros(props.id) }
+                        { returnWithZeros(id) }
                     </span>
 
-                    <Figure className={props.types[0].type.name}>
-                        <img src={props.sprite} alt="" />
+                    <Figure className={types[0].type.name}>
+                        <img src={sprite} alt="" />
                     </Figure>
 
                     <Types>
-                        {props.types.map(
+                        {types.map(
                             (type, i) => {
-                                return <span key={i} className={type.type.name}>{type.type.name.toUpperCase()}</span>
+                                return <span key={i} onClick={ () => setType({ name: type.type.name }) } className={type.type.name}>{type.type.name.toUpperCase()}</span>
                             }
                         )}
                     </Types>
                 </Sprite>
-                <h2>{capitalize(props.name)}</h2>
+                <h2>{capitalize(name)}</h2>
             </div>
         </Container>
     );
