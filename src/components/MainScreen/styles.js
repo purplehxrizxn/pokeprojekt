@@ -212,6 +212,7 @@ export const OrderBy = styled.div`
             right: 10px;
             top: 30%;
             color: #1e1e1e;
+            z-index: 1;
 
             path {
                 stroke-width: 125px;

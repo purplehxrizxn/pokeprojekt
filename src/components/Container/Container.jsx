@@ -1,13 +1,20 @@
 import { Screen, Glass, Title, TurnedOff, Button, Animation } from './styles'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { AiOutlinePoweroff } from 'react-icons/ai'
 
+import MainScreen from '../MainScreen/MainScreen'
 
-export default function Container(props){
+export default function Container(){
 
     const [turnedOn, setTurnedOn] = useState(false);
     const [animation, setAnimation] = useState(false);
     const [lightOn, setLightOn] = useState(false);
+    const screenRef = useRef(null);
+
+    function backToTop() {
+        screenRef.current.scrollTo({top: 0, behavior: 'smooth'});
+    }
+       
 
     useEffect( () => {
         if (animation) {
@@ -58,8 +65,8 @@ export default function Container(props){
     } else {
         return (
             <Glass>
-                <Screen>
-                    {props.children}
+                <Screen ref={screenRef}>
+                    <MainScreen backToTop={() => backToTop() }/>
                 </Screen>
                 <Title>PokéProjekt</Title>
                 <a href="https://github.com/purplehxrizxn" target="_blank" rel="noreferrer">github/purplehxrizxn</a>

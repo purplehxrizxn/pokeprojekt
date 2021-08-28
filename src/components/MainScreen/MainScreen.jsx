@@ -6,13 +6,13 @@ import {
 } from './styles'
 
 import gif from '../../assets/loading.gif'
-import Card from '../../components/Card/Card'
+import Card from '../Card/Card'
 import Api  from '../../api/v2/api'
 
 import { IoMdArrowDropdown } from 'react-icons/io'
 
 
-export default function Cards(){  
+export default function MainScreen({ backToTop }){  
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,13 +20,14 @@ export default function Cards(){
   const [pokemonFilter, setPokemonFilter] = useState([]);
   const [limit, setLimit] = useState(10);
 
-  function handlePokemonFilter(searchContent = 'null', byInput = false) {
+  function handlePokemonFilter(searchContent = 'null', byTextInput = false) {
     const result = [];
 
-    if(!byInput) {
+    if(!byTextInput) {
       if (searchContent === 'null') {
         setPokemonFilter(pokemon);
         setLimit(10);
+        backToTop();
       } else {
         pokemon.forEach( pkm => {
           pkm.types.forEach(
@@ -34,7 +35,8 @@ export default function Cards(){
           )
         })
         setPokemonFilter(result);
-        setLimit(10);
+        setLimit(10); 
+        backToTop();
       }
     } else {
       pokemon.forEach( 
@@ -69,18 +71,18 @@ export default function Cards(){
         <Search>
             <Main>
                 <span>Search for a Pokémon...</span>
-                <input type="text" placeholder="Blastoise, Umbreon, Lapras..." onChange={ ({ target }) => { handlePokemonFilter(target.value, true)} } />
+                <input type="text" onClick={() => backToTop()} placeholder="Blastoise, Umbreon, Lapras..." onChange={({ target }) => { handlePokemonFilter(target.value, true)}} />
             </Main>
 
             <OrderBy>
-                <span>
+                <span> 
                     or filter by<span> type</span>:
                 </span>
                     <label htmlFor="select" className="select">
                         <IoMdArrowDropdown />
                         <select name="" id="select" 
                           onChange={ (e) => { handlePokemonFilter(e.target.value) } }>
-                            <option selected disabled value="">...</option>
+                            <option defaultValue disabled>...</option>
                             <option value="null">All</option>
                             <option value="bug">Bug</option>
                             <option value="dark">Dark</option>
@@ -123,14 +125,13 @@ export default function Cards(){
               sprite={sprites.front_default}
               types={types}
               gen={ ((game_indices[0]) ? game_indices[0].version.name : 'Special') }
-              getFilter={ (e) => { handlePokemonFilter(e)} }
-
+              getFilter={(type) => handlePokemonFilter(type)}
             />
           )) }
           </Container>
           { limit <= pokemonFilter.length ? 
             <>
-              <LoadMore onClick={ () => setLimit(limit + 10) }>show more</LoadMore>
+              <LoadMore onClick={() => setLimit(limit + 10)}>show more</LoadMore>
             </> 
             : false }
 
