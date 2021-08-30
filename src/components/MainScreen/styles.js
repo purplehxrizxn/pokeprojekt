@@ -76,6 +76,7 @@ export const Loading = styled.div`
 
 export const LoadMore = styled.button`
     margin: 0 auto;
+    margin-bottom: 25px;
     display: flex;
     align-self: center;
     justify-self: center;
@@ -107,7 +108,6 @@ const opacity = keyframes`
 `;
 
 export const Wrapper = styled.div`
-    padding-bottom: 25px;
     animation: ${opacity} .5s ease;
 `;
 

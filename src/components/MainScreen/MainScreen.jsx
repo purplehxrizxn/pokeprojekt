@@ -16,34 +16,30 @@ export default function MainScreen({ backToTop }){
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [pokemon, setPokemon] = useState([]);
+  const [pokemon, setPokemon] = useState([]); 
   const [pokemonFilter, setPokemonFilter] = useState([]);
   const [limit, setLimit] = useState(10);
 
   function handlePokemonFilter(searchContent = 'null', byTextInput = false) {
-    const result = [];
+    var result = [];
 
     if(!byTextInput) {
-      if (searchContent === 'null') {
-        setPokemonFilter(pokemon);
-        setLimit(10);
-        backToTop();
-      } else {
-        pokemon.forEach( pkm => {
-          pkm.types.forEach(
-              type => type.type.name === searchContent ? result.push(pkm) : false
-          )
-        })
-        setPokemonFilter(result);
-        setLimit(10); 
-        backToTop();
+      if (searchContent !== 'null') {
+        result = pokemon.filter( 
+          pkm => {
+            return pkm.types.some(
+                type => type.type.name === searchContent ? true : false
+            )
+        }) 
       }
     } else {
-      pokemon.forEach( 
-        pkm => (pkm.species.name).indexOf(searchContent.replace(' ', '').toLowerCase()) > -1 ? result.push(pkm) : false);
-      setPokemonFilter(result);
-      setLimit(10);
+      result = pokemon.filter( 
+        pkm => (pkm.species.name).indexOf(searchContent.replace(' ', '').toLowerCase()) > -1 ? true : false);
     }
+
+    backToTop();
+    setLimit(10); 
+    searchContent === 'null' ? setPokemonFilter(pokemon) : setPokemonFilter(result);
   }
 
   function handleArray(array, limit){
@@ -118,13 +114,12 @@ export default function MainScreen({ backToTop }){
           <Container>
           { handleArray(pokemonFilter, limit).map(({ name, id, sprites, types, game_indices}, i) => (
             <Card 
-    
               key={i} 
               name={name} 
               id={id}
               sprite={sprites.front_default}
               types={types}
-              gen={ ((game_indices[0]) ? game_indices[0].version.name : 'Special') }
+              gen={((game_indices[0]) ? game_indices[0].version.name : 'Special')}
               getFilter={(type) => handlePokemonFilter(type)}
             />
           )) }

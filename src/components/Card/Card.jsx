@@ -68,12 +68,12 @@ export default function Card({
         <Container>
             <div>
                 <p>
-                    { returnGen(gen) }
+                    {returnGen(gen)}
                 </p>
 
                 <Sprite>
                     <span>
-                        { returnWithZeros(id) }
+                        {returnWithZeros(id)}
                     </span>
 
                     <Figure className={types[0].type.name}>
