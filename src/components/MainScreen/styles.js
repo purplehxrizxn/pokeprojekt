@@ -120,7 +120,7 @@ export const ButtonTop = styled.span`
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     border: 1px solid #ccc;
 `;

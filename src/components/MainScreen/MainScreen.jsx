@@ -43,13 +43,9 @@ export default function MainScreen({ backToTop }){
     searchContent === 'null' ? setPokemonFilter(pokemon) : setPokemonFilter(result);
   }
 
-  function setFavoritesFirst(a, b) {
+  function setFavoritesFirst(a) {
     if (a.favorite) {
       return -1;
-    }
-
-    if (a.id < b.id) {
-      return 1;
     }
   }
 
@@ -66,8 +62,8 @@ export default function MainScreen({ backToTop }){
       return poke.id === id ? { ...poke, favorite: !poke.favorite } : poke
     });
 
-    setPokemonFilter(pokeFavs);
     setPokemon(pokeFavs);
+    setPokemonFilter(pokeFavs);
   }
 
   useEffect(() => {

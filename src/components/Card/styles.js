@@ -93,6 +93,7 @@ export const Figure = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 3px solid;
 
     &.normal {
         border: 3px solid #A5AB76;
@@ -165,7 +166,6 @@ export const Figure = styled.div`
     &.dragon {
         border: 3px solid #8200FA;
     }
-
 `;
 
 export const Types = styled.div`
@@ -193,78 +193,5 @@ export const Types = styled.div`
             box-shadow: 2px 2px black;
             cursor: pointer;
         }
-
-        &.normal {
-            background: #A5AB76;
-        }
-
-        &.fighting {
-            background: #B72529;
-        }
-        
-        &.flying {
-            background: #AD7EF0;
-        }
-
-        &.poison {
-            background: #98269B;
-        }
-        
-        &.ground {
-            background: #D8C564;
-        }
-
-        &.rock {
-            background: #AFA534;
-        }
-
-        &.bug {
-            background: #A1C014;
-        }
-
-        &.ghost {
-            background: #734A98;
-        }
-
-        &.steel {
-            background: #B9B4CF;
-        }
-
-        &.fire {
-            background: #E6802E;
-        }
-
-        &.water {
-            background: #6990F0;
-        }
-
-        &.grass {
-            background: #75CF49;
-        }
-
-        &.electric {
-            background: #EED727;
-        }
-
-        &.psychic {
-            background: #EE4788;
-        }
-
-        &.ice {
-            background: #9ED8D7;
-        }
-
-        &.dark {
-            background: #6B5847;
-        }
-
-        &.fairy {
-            background: #FA41D5;
-        }
-
-        &.dragon {
-            background: #8200FA;
-        }
-
     }
 `;
