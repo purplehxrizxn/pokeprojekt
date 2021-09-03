@@ -2,13 +2,17 @@ import {
     Container, Sprite, Figure, Types
 } from './styles'
 
+import Heart from '../../assets/heart.png'
+
 export default function Card({ 
     gen, 
     id, 
     name, 
     sprite, 
     types,
-    getFilter 
+    getFilter,
+    favoritePokemon,
+    favorite
 }) {
 
     function returnWithZeros(number) {
@@ -88,7 +92,12 @@ export default function Card({
                         )}
                     </Types>
                 </Sprite>
-                <h2>{capitalize(name)}</h2>
+                <h2>
+                    {capitalize(name)} 
+                    <div className="Image" onClick={ () => favoritePokemon(id) }>
+                        <img src={Heart} className={ favorite ? 'favorite' : ''} alt="" />
+                    </div>
+                </h2>
             </div>
         </Container>
     );

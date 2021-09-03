@@ -111,6 +111,20 @@ export const Wrapper = styled.div`
     animation: ${opacity} .5s ease;
 `;
 
+export const ButtonTop = styled.span`
+    color: #ccc;
+    font-size: .8rem;
+    display: block;
+    text-align: center;
+    width: max-content;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+`;
+
 export const Search = styled.div`
     margin-top: 50px;
     margin-bottom: 50px;

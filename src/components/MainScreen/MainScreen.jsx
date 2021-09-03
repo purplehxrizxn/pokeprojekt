@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 
 import { 
   Container, Loading, NotFound,
-  LoadMore, Search, OrderBy, Main, Wrapper 
+  LoadMore, Search, OrderBy, Main,
+  Wrapper, ButtonTop
 } from './styles'
 
 import gif from '../../assets/loading.gif'
@@ -42,10 +43,31 @@ export default function MainScreen({ backToTop }){
     searchContent === 'null' ? setPokemonFilter(pokemon) : setPokemonFilter(result);
   }
 
+  function setFavoritesFirst(a, b) {
+    if (a.favorite) {
+      return -1;
+    }
+
+    if (a.id < b.id) {
+      return 1;
+    }
+  }
+
   function handleArray(array, limit){
     let result = array.slice(0, limit);
 
+    result = result.sort(setFavoritesFirst);
+
     return result;
+  }
+
+  function handleFavorite(id){
+    const pokeFavs = pokemonFilter.map(poke => {
+      return poke.id === id ? { ...poke, favorite: !poke.favorite } : poke
+    });
+
+    setPokemonFilter(pokeFavs);
+    setPokemon(pokeFavs);
   }
 
   useEffect(() => {
@@ -112,7 +134,7 @@ export default function MainScreen({ backToTop }){
         
         (<>
           <Container>
-          { handleArray(pokemonFilter, limit).map(({ name, id, sprites, types, game_indices}, i) => (
+          { handleArray(pokemonFilter, limit).map(({ name, id, sprites, types, game_indices, favorite}, i) => (
             <Card 
               key={i} 
               name={name} 
@@ -121,6 +143,8 @@ export default function MainScreen({ backToTop }){
               types={types}
               gen={((game_indices[0]) ? game_indices[0].version.name : 'Special')}
               getFilter={(type) => handlePokemonFilter(type)}
+              favoritePokemon={ (e) => handleFavorite(e) }
+              favorite={favorite}
             />
           )) }
           </Container>
@@ -135,9 +159,14 @@ export default function MainScreen({ backToTop }){
               <span>Try again.</span>
             </NotFound> 
             : false }
+
+            { pokemonFilter.length > 3 ?
+              <>
+                <ButtonTop onClick={() =>  backToTop()}>BACK TO TOP</ButtonTop>
+              </> 
+              : false }
         </>
         )}
-        
       </Wrapper>
     );
   } else {

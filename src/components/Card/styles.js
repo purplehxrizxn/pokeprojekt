@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const heart = keyframes`
+    from {
+        transform: scale(1.50);
+    }
+
+    to {
+        transform: scale(1);
+    }
+`;
 
 export const Container = styled.div`
     background: #191919;
@@ -20,6 +30,7 @@ export const Container = styled.div`
     align-items: center;
     text-align: center;
     color: #C9D3E0;
+    position: relative;
 
     p {
         font-size: 0.9rem;
@@ -33,10 +44,32 @@ export const Container = styled.div`
         letter-spacing: 1px;
         color: #eee;
         text-align: left;
+        position: relative;
+
+        .Image {
+            position: absolute;
+            transform: translateY(-100%);
+            right: 0;
+            cursor: pointer;
+            z-index: 10;
+    
+            img {
+                width: 20px;
+                height: 18px;
+                filter: sepia(1);
+                transition: .5s ease-out;
+                
+                &.favorite {
+                    animation: ${heart} .5s;
+                    filter: sepia(0);
+                    transition: .5s cubic-bezier(0.01, 0.75, 0.58, 1);
+                }
+            }
+        }
     }
 `; 
 
-export const Sprite = styled.div`
+export const Sprite = styled.div` 
     height: 200px;
     width: 230px;
     background: #222;

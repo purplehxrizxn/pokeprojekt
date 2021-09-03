@@ -13,12 +13,11 @@ export default function Container(){
 
     function backToTop() {
         screenRef.current.scrollTo({top: 0, behavior: 'smooth'});
-    }
-       
+    }   
 
-    useEffect( () => {
+    useEffect(() => {
         if (animation) {
-            setTimeout( () => { 
+            setTimeout(() => { 
                 setTurnedOn(true);
                 setAnimation(false);
             }, 6000);
