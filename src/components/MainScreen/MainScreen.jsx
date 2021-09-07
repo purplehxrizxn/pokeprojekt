@@ -19,20 +19,30 @@ export default function MainScreen({ backToTop }){
   const [loading, setLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]); 
   const [pokemonFilter, setPokemonFilter] = useState([]);
+  const [currentFilter, setCurrentFilter] = useState('');
   const [limit, setLimit] = useState(10);
 
-  function handlePokemonFilter(searchContent = 'null', byTextInput = false) {
+  const filtersType = [
+    'all', 'bug', 'dark', 'dragon',
+    'electric', 'fairy', 'fighting',
+    'fire', 'flying', 'ghost', 'grass',
+    'ground', 'ice', 'normal', 'poison',
+    'psychic', 'rock', 'steel', 'water'
+  ];
+
+  function handlePokemonFilter(searchContent = 'all', byTextInput = false) {
     var result = [];
 
     if(!byTextInput) {
-      if (searchContent !== 'null') {
+      if (searchContent !== 'all') {
         result = pokemon.filter( 
           pkm => {
             return pkm.types.some(
                 type => type.type.name === searchContent ? true : false
             )
-        }) 
+        })
       }
+      setCurrentFilter(searchContent);  
     } else {
       result = pokemon.filter( 
         pkm => (pkm.species.name).indexOf(searchContent.replace(' ', '').toLowerCase()) > -1 ? true : false);
@@ -40,7 +50,7 @@ export default function MainScreen({ backToTop }){
 
     backToTop();
     setLimit(10); 
-    searchContent === 'null' ? setPokemonFilter(pokemon) : setPokemonFilter(result);
+    searchContent === 'all' ? setPokemonFilter(pokemon) : setPokemonFilter(result);
   }
 
   function setFavoritesFirst(a) {
@@ -58,12 +68,15 @@ export default function MainScreen({ backToTop }){
   }
 
   function handleFavorite(id){
-    const pokeFavs = pokemonFilter.map(poke => {
+    const pokeFavs = pokemon.map(poke => {
       return poke.id === id ? { ...poke, favorite: !poke.favorite } : poke
     });
 
     setPokemon(pokeFavs);
-    setPokemonFilter(pokeFavs);
+  }
+
+  function capitalize(string){
+    return `${string.charAt(0).toUpperCase()}${string.slice(1)}`;
   }
 
   useEffect(() => {
@@ -71,13 +84,20 @@ export default function MainScreen({ backToTop }){
       (success) => {
         setLoading(false);
         setPokemon(success);
-        setPokemonFilter(success);
       },
       (error) => {
         setLoading(false);
         setError(error);
       })
   }, []);
+
+  useEffect(() => {
+    setPokemonFilter(pokemon);
+  }, [pokemon]);
+
+  useEffect(() => {
+
+  }, [currentFilter]);
 
   if(!error){
     return (
@@ -95,27 +115,11 @@ export default function MainScreen({ backToTop }){
                     <label htmlFor="select" className="select">
                         <IoMdArrowDropdown />
                         <select name="" id="select" 
-                          onChange={ (e) => { handlePokemonFilter(e.target.value) } }>
+                          onChange={(e) => handlePokemonFilter(e.target.value)}>
                             <option defaultValue disabled>...</option>
-                            <option value="null">All</option>
-                            <option value="bug">Bug</option>
-                            <option value="dark">Dark</option>
-                            <option value="dragon">Dragon</option>
-                            <option value="electric">Electric</option>
-                            <option value="fairy">Fairy</option>
-                            <option value="fighting">Fighting</option>
-                            <option value="fire">Fire</option>
-                            <option value="flying">Flying</option>
-                            <option value="ghost">Ghost</option>
-                            <option value="grass">Grass</option>
-                            <option value="ground">Ground</option>
-                            <option value="ice">Ice</option>
-                            <option value="normal">Normal</option>
-                            <option value="poison">Poison</option>
-                            <option value="psychic">Psychic</option>
-                            <option value="rock">Rock</option>
-                            <option value="steel">Steel</option>
-                            <option value="water">Water</option>
+                            { filtersType.map((type, i) => {
+                              return (<option key={i} value={type} selected={currentFilter === type}>{capitalize(type)}</option>)
+                            }) }
                         </select>
                     </label>
             </OrderBy>
@@ -139,7 +143,7 @@ export default function MainScreen({ backToTop }){
               types={types}
               gen={((game_indices[0]) ? game_indices[0].version.name : 'Special')}
               getFilter={(type) => handlePokemonFilter(type)}
-              favoritePokemon={ (e) => handleFavorite(e) }
+              favoritePokemon={(e) => handleFavorite(e)}
               favorite={favorite}
             />
           )) }
